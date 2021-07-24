@@ -37,10 +37,7 @@ def NSLbruteforce(arr):
 
 if __name__ == '__main__':
     arr = [4, 5, 2, 10, 8]
-    # print("Time taken for Brute force is ")
-    # print(timeit.timeit("NGRbruteforce(arr)"))
+    print(arr)
 
-    # print("Time taken for Stack is ")
-    # print(timeit.timeit("NGR(arr)"))
     print(NSLbruteforce(arr))
     print(NSL(arr))
