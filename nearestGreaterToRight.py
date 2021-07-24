@@ -3,29 +3,32 @@
 # right
 # if nothing exists to the right of a value, let it's corresponding
 # value be -1
+import timeit
 
-def NGLbruteforce(arr):
+
+def NGRbruteforce(arr):
     newarr = []
     for i, j in enumerate(arr):
-
-        for k in range(i, -1, -1):
+        for k in range(i, len(arr)):
             if arr[k] > j:
                 newarr.append(arr[k])
                 break
-            if k == 0:
+            if k == len(arr)-1:
                 newarr.append(-1)
-
     return newarr
 
+# def reverse(arr):
+#     for i,j in enumerate(arr):
+#         temp=0
 
-def NGL(arr):
 
+def NGR(arr):
     stack = []
     top = 0
     newarr = []
 
-    for i in range(len(arr)):
-        if i == 0:
+    for i in range(len(arr)-1, -1, -1):
+        if i == len(arr)-1:
             newarr.append(-1)
             stack.append(arr[i])
             top = 0
@@ -36,6 +39,8 @@ def NGL(arr):
                     top -= 1
                 if stack == []:
                     newarr.append(-1)
+                    stack.append(arr[i])
+                    top = 0
                 else:
                     newarr.append(stack[top])
                     stack.append(arr[i])
@@ -56,5 +61,5 @@ if __name__ == '__main__':
 
     # print("Time taken for Stack is ")
     # print(timeit.timeit("NGR(arr)"))
-    print(NGLbruteforce(arr))
-    print(NGL(arr))
+    print(NGRbruteforce(arr))
+    print(NGR(arr))
